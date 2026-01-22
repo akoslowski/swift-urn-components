@@ -56,7 +56,7 @@ public struct URNComponents: CustomStringConvertible {
     }
 
     public var description: String {
-        "\(assignedName)\(rqf, default: "")"
+        "\(assignedName)\(rqf?.description ?? "")"
     }
 
     /// The combination of the "urn:" scheme, the NID, and
@@ -231,7 +231,7 @@ extension URNComponents {
                 (.fragmentIndicator, fragment),
             ]
             .filter { $1 != nil }
-            .map { "\($0)\($1, default: "")" }
+            .map { "\($0)\($1 ?? "")" }
             .joined()
         }
     }
